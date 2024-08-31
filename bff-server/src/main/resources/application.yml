@@ -1,0 +1,46 @@
+spring:
+  main:
+    web-application-type: reactive
+
+  application:
+    name: bff-server
+
+  security:
+    oauth2:
+      client:
+        registration:
+          demo:
+            provider: keycloak
+            client-id: bff_cl
+            client-secret: JM5NtMSkPeQF3t2eAFHFvkuVkWcMgsz2
+            authorization-grant-type: authorization_code
+            #              redirect-uri: http://localhost:8082/login/oauth2/code/demo
+            scope: openid, profile, email, roles
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8080/realms/hadilka
+
+logging:
+  level:
+    root: INFO
+    org:
+      springframework:
+        security: TRACE
+        cloud:
+          gateway: Trace
+      springframework.web: DEBUG
+    reactor.netty.http.server: DEBUG
+server:
+  port: 8082
+
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: ResourceServer
+#          uri: http://localhost:8083
+#          predicates:
+#            - Path=/api/**
+
+
+
+
