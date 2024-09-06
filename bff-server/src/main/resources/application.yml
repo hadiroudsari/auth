@@ -9,7 +9,7 @@ spring:
     oauth2:
       client:
         registration:
-          demo:
+          bff:
             provider: keycloak
             client-id: bff_cl
             client-secret: JM5NtMSkPeQF3t2eAFHFvkuVkWcMgsz2
