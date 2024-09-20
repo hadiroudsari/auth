@@ -1,0 +1,26 @@
+spring:
+  application.name: Eureka
+  main:
+    web-application-type: servlet
+  security:
+    user:
+      name: user
+      password: password
+
+server:
+   port: 8761
+eureka:
+    client.register-with-eureka: false
+    client.fetch-registry: false
+#    datacenter: localhost
+
+
+logging:
+  level:
+    root: INFO
+    org:
+      springframework:
+        security: TRACE
+        cloud:
+          gateway: Trace
+      springframework.web: DEBUG
