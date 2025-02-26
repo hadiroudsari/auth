@@ -1,4 +1,4 @@
-# auth
+# Auth
 This application leverages the Backend for Frontend (BFF) pattern in alongside with Single Sign-On (SSO) via Keycloak to securely access resources.
 
 In this setup, the end user does not directly handle authentication tokens. Instead, the user is authenticated using an authorization code obtained from Keycloak. The BFF layer establishes a session based on this authorization code and securely manages the tokens. The BFF server then uses the valid token to access resources from the resource server on behalf of the user and returns the relevant data to the frontend.
