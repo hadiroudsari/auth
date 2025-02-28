@@ -38,7 +38,9 @@ services:
       - postgres
     networks:
       - keycloak_network
-
+    volumes:
+      - ./create-user.sh:/opt/keycloak/create-user.sh
+    entrypoint: ["/bin/sh", "-c", "/opt/keycloak/bin/kc.sh start & sleep 17 && /bin/sh /opt/keycloak/create-user.sh && wait"]
 volumes:
   postgres_data:
     driver: local
