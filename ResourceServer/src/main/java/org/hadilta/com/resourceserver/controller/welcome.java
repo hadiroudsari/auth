@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class welcome {
+    @PreAuthorize("hasRole('client_user')")
     @GetMapping("/greeting")
     public String greeting() {
 //        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
