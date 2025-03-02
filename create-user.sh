@@ -22,6 +22,7 @@ ROOT_URL1="http://localhost:8082"
 VALID_REDIRECT_URIS1="http://localhost:8082/*"
 VALID_POST_LOGOUT_REDIRECT_URIS1="http://localhost:8082/logout"
 WEB_ORIGINS1="*"
+CLIENT_SECRET="my-custom-secret"
 
 # Second Client: `greeting` (Port 8081, PUBLIC)
 CLIENT_ID2="greeting"
@@ -34,6 +35,7 @@ USERNAME="testuser"
 PASSWORD="testuser"
 ROLE_USER="client_user"
 ROLE_ADMIN="client_admin"
+
 
 # Function to create a client
 create_client() {
@@ -81,6 +83,12 @@ echo "Creating role '$ROLE_ADMIN' in client '$CLIENT_ID2'..."
 # Assign Both Roles to User
 echo "Assigning roles '$ROLE_USER' and '$ROLE_ADMIN' to user '$USERNAME'..."
 /opt/keycloak/bin/kcadm.sh add-roles -r "$REALM_NAME" --uusername "$USERNAME" --cclientid "$CLIENT_ID2" --rolename "$ROLE_USER" --rolename "$ROLE_ADMIN"
+
+BFF_CLIENT_UUID=$(/opt/keycloak/bin/kcadm.sh get clients -r "$REALM_NAME" --query clientId="$CLIENT_ID1" --fields id --format csv | tail -n 1 | tr -d '"')
+echo $BFF_CLIENT_UUID
+# Set custom client secret for bff_cl
+echo "Setting custom client secret for '$CLIENT_ID1'..."
+/opt/keycloak/bin/kcadm.sh update clients/"$BFF_CLIENT_UUID" -r "$REALM_NAME" -s secret="CLIENT_SECRET"
 
 
 echo "Setup completed! Both clients are ready."
