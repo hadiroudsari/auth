@@ -12,7 +12,7 @@ spring:
           bff:
             provider: keycloak
             client-id: bff_cl
-            client-secret: JM5NtMSkPeQF3t2eAFHFvkuVkWcMgsz2
+            client-secret: CLIENT_SECRET
             authorization-grant-type: authorization_code
             #              redirect-uri: http://localhost:8082/login/oauth2/code/demo
             scope: openid, profile, email, roles
