@@ -41,6 +41,28 @@ services:
     volumes:
       - ./create-user.sh:/opt/keycloak/create-user.sh
     entrypoint: ["/bin/sh", "-c", "/opt/keycloak/bin/kc.sh start & sleep 17 && /bin/sh /opt/keycloak/create-user.sh && wait"]
+
+  bff-server:
+    build: ./bff-server
+    container_name: bff-server
+    depends_on:
+      - keycloak
+      - resource-server
+    network_mode: "host"
+
+  resource-server:
+    build: ./ResourceServer
+    container_name: resource-server
+    depends_on:
+      - keycloak
+    network_mode: "host"
+
+  eureka:
+    build: ./Eureka
+    container_name: eureka
+    network_mode: "host"
+
+
 volumes:
   postgres_data:
     driver: local
