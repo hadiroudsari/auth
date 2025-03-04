@@ -20,7 +20,7 @@ echo "Creating realm '$REALM_NAME'..."
 CLIENT_ID1="bff_cl"
 ROOT_URL1="http://localhost:8082"
 VALID_REDIRECT_URIS1="http://localhost:8082/*"
-VALID_POST_LOGOUT_REDIRECT_URIS1="http://localhost:8082/logout"
+VALID_POST_LOGOUT_REDIRECT_URIS1="http://localhost:8082/*"
 WEB_ORIGINS1="*"
 CLIENT_SECRET="my-custom-secret"
 
