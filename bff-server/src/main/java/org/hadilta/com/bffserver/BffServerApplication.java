@@ -32,6 +32,9 @@ public class BffServerApplication {
                 .route("ResourceServer", r -> r.path("/greeting/**")
                         .filters(GatewayFilterSpec::tokenRelay)
                         .uri(ResourceServer.getHomePageUrl()))
+                .route("ResourceServer", r -> r.path("/admin/**")
+                        .filters(GatewayFilterSpec::tokenRelay)
+                        .uri(ResourceServer.getHomePageUrl()))
                 .build();
     }
 
