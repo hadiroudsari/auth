@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 20px;
+    }
+    h1, h2 {
+      color: #333;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Admin Dashboard</h1>
+
+<!-- Users Section -->
+<h2>Users</h2>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Username</th> <!--  Correct label -->
+    <th>Enabled</th>  <!--  Added missing header -->
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="user : ${users}">
+    <td th:text="${user['id']}"></td>
+    <td th:text="${user['username']}"></td>
+    <td th:text="${user['enabled']}"></td>
+  </tr>
+  </tbody>
+</table>
+
+<!-- Clients Section -->
+<h2>Clients</h2>
+<table>
+  <thead>
+  <tr>
+    <th>Client ID</th>
+    <th>Base URL</th> <!--  Updated column name -->
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="client : ${clients}">
+    <td th:text="${client['clientId']}"></td>
+    <td th:text="${client['baseUrl']}"></td>
+  </tr>
+  </tbody>
+</table>
+
+</body>
+</html>

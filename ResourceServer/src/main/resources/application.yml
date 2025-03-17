@@ -9,8 +9,12 @@ spring:
 
 logging:
     level:
-      org.springframework.security: TRACE
-      org.springframework.boot.context.config: DEBUG
+      org:
+        springframework:
+          security: DEBUG
+          boot:
+            context:
+              config: DEBUG
 
 server:
   port: 8081

@@ -18,6 +18,5 @@ public class welcome {
     @GetMapping("/greeting/admin")
     public String greetingAdmin() {
         return "hello to admin";
-
     }
 }
